@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KELTEX – Stavebná firma | Výstavba a rekonštrukcie</title>
+    <meta name="description" content="KELTEX – stavebná firma. Výstavba rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce. Kontaktujte nás pre cenovú ponuku.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+      "name": "KELTEX",
+      "url": "https://www.keltex.sk/",
+      "logo": "https://www.keltex.sk/logo.png",
+      "image": "https://www.keltex.sk/logo.png",
+      "telephone": "+421905231350",
+      "email": "info@keltex.sk",
+      "foundingDate": "2015",
+      "description": "Stavebná firma KELTEX ponúka výstavbu rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Čadečka 579",
+        "postalCode": "022 01",
+        "addressLocality": "Čadca",
+        "addressCountry": "SK"
+      },
+      "areaServed": "Čadca a okolie",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "17:00"
+        }
+      ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E55A2B;
+            --secondary: #2C3E50;
+            --accent: #27AE60;
+            --light: #F8F9FA;
+            --dark: #1A1A1A;
+            --gray: #6C757D;
+            --gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFA94D 100%);
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.35);
+            --glass-orange-bg: rgba(255, 140, 66, 0.22);
+            --glass-orange-border: rgba(255, 107, 53, 0.4);
+            --glass-gray-bg: rgba(60, 66, 72, 0.45);
+            --glass-gray-border: rgba(255, 255, 255, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            overflow-x: hidden;
+        }
+
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: #F8F9FA;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            position: relative;
+        }
+
+        .logo {
+            width: 250px;
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-phone {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-phone:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop') center/cover;
+            animation: heroZoom 20s ease-in-out infinite;
+        }
+
+        @keyframes heroZoom {
+            0%, 100% { background-size: 100% auto; }
+            50% { background-size: 110% auto; }
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 3px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--gradient);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* Services */
+        .services {
+            position: relative;
+            padding: 6rem 2rem;
+            background: var(--light);
+            overflow: hidden;
+        }
+
+        /* Fixed SVG house logo watermark - sits between background and cards */
+        .services-bg-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 480px;
+            height: 480px;
+            max-width: 70vw;
+            max-height: 70vw;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.16;
+        }
+
+        .services-bg-logo svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .services .section-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            perspective: 1500px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 3D Glass Cards - Services (orange tinted glass, lets logo show through gaps) */
+        .service-card {
+            background: var(--glass-orange-bg);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
+            border: 1px solid var(--glass-orange-border);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, opacity 0.6s ease;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            opacity: 0;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px) rotateX(4deg) rotateY(-4deg) scale(1.02);
+            box-shadow: var(--shadow-hover), 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            border-radius: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .process-step p {
+            color: var(--gray);
+        }
+
+        /* Projects Gallery */
+        .projects {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            perspective: 1500px;
+        }
+
+        /* 3D Glass Cards - Projects */
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, opacity 0.6s ease;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            opacity: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) rotateX(4deg) rotateY(4deg) scale(1.02);
+            box-shadow: var(--shadow-hover), 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .project-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E9ECEF;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.8);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--gradient);
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: white;
+            line-height: 1;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(255, 107, 53, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mobile-menu-btn.active {
+            transform: rotate(90deg);
+            box-shadow: 0 8px 22px rgba(255, 107, 53, 0.38);
+        }
+
+        /* Scroll-in animation base states - cards fly in from sides */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .services-grid .service-card,
+        .projects-grid .project-card {
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease, box-shadow 0.4s ease;
+        }
+
+        .services-grid .service-card:nth-child(odd),
+        .projects-grid .project-card:nth-child(odd) {
+            transform: translateX(-120px) rotateY(-15deg);
+        }
+
+        .services-grid .service-card:nth-child(even),
+        .projects-grid .project-card:nth-child(even) {
+            transform: translateX(120px) rotateY(15deg);
+        }
+
+        .services-grid .service-card.visible,
+        .projects-grid .project-card.visible {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header-container {
+                padding: 1rem;
+                position: relative;
+            }
+
+            nav {
+                position: static;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                left: 1rem;
+                right: 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.75rem;
+                background: rgba(255, 255, 255, 0.98);
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: 18px;
+                box-shadow: 0 14px 35px rgba(0,0,0,0.14);
+                z-index: 1001;
+                opacity: 0;
+                transform: translateY(-8px);
+                transition: opacity 0.25s ease, transform 0.25s ease;
+            }
+
+            nav ul.open {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul a {
+                display: block;
+                width: 100%;
+                padding: 0.8rem 0.9rem;
+                border-radius: 10px;
+                color: var(--secondary);
+                background: rgba(255, 107, 53, 0.04);
+            }
+
+            nav ul a:hover {
+                background: rgba(255, 107, 53, 0.08);
+                color: var(--primary);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .stats-bar {
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid .service-card:nth-child(odd),
+            .services-grid .service-card:nth-child(even),
+            .projects-grid .project-card:nth-child(odd),
+            .projects-grid .project-card:nth-child(even) {
+                transform: translateX(0) translateY(40px) rotateY(0deg);
+            }
+
+            .services-grid .service-card.visible,
+            .projects-grid .project-card.visible {
+                transform: translateX(0) translateY(0) rotateY(0deg);
+            }
+
+            .services-bg-logo {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .services-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .services-bg-logo {
+                width: 240px;
+                height: 240px;
+                opacity: 0.12;
+            }
+        }
+
+        /* ===== DARK MODE FOR MOBILE (max-width: 768px) ===== */
+        @media (max-width: 768px) {
+            body {
+                background: #0F0F12;
+                color: #E8E8EA;
+            }
+
+            header {
+                background: rgba(15, 15, 18, 0.85);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            }
+
+            nav a {
+                color: #E8E8EA;
+            }
+
+            nav ul {
+                background: #17171C !important;
+            }
+
+            .mobile-menu-btn {
+                color: #E8E8EA;
+            }
+
+            .hero {
+                background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                            url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop') center/cover;
+            }
+
+            .services,
+            .projects,
+            .contact {
+                background: #0F0F12;
+            }
+
+            .process {
+                background: #131317;
+            }
+
+            .section-header h2 {
+                color: #F5F5F7;
+            }
+
+            .section-header p {
+                color: #A0A0A8;
+            }
+
+            .service-card {
+                background: rgba(255, 140, 66, 0.16);
+                border: 1px solid rgba(255, 107, 53, 0.35);
+                backdrop-filter: blur(18px) saturate(150%);
+                -webkit-backdrop-filter: blur(18px) saturate(150%);
+            }
+
+            .project-card,
+            .contact-form {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                backdrop-filter: blur(18px) saturate(150%);
+                -webkit-backdrop-filter: blur(18px) saturate(150%);
+            }
+
+            .service-card h3,
+            .project-info h3,
+            .process-step h3 {
+                color: #F5F5F7;
+            }
+
+            .service-card p,
+            .project-info p,
+            .process-step p,
+            .contact-info p {
+                color: #A0A0A8;
+            }
+
+            .contact-info h3 {
+                color: #F5F5F7;
+            }
+
+            .contact-item {
+                color: #E8E8EA;
+            }
+
+            .form-group label {
+                color: #E8E8EA;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                background: rgba(255,255,255,0.08);
+                border: 2px solid rgba(255,255,255,0.15);
+                color: #E8E8EA;
+            }
+
+            .form-group input::placeholder,
+            .form-group textarea::placeholder {
+                color: #6C6C74;
+            }
+
+            .author-info h4 {
+                color: #F5F5F7;
+            }
+
+            footer {
+                background: #08080A;
+            }
+
+            .services-bg-logo {
+                opacity: 0.1;
+            }
+
+            .services-bg-logo svg g {
+                stroke: #FF8C42;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img class="logo" src="logo.png" alt="Keltex kompletná stavebná činnosť" />
+            <nav>
+                <ul>
+                    <li><a href="#sluzby">Služby</a></li>
+                    <li><a href="#proces">Proces</a></li>
+                    <li><a href="#projekty">Projekty</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <a href="tel:+421905231350" class="cta-phone">
+                <span>📞 0905 231 350</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Otvoriť menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Staviame vaše sny s precíznosťou a kvalitou</h1>
+            <p>
+                KELTEX realizuje výstavbu rodinných domov, rekonštrukcie,
+                prístavby, nadstavby a ďalšie stavebné práce hlavne v Trenčianskom a Žilinskom kraji.
+            </p>
+            <div class="hero-buttons">
+                <a href="#kontakt" class="btn-primary">Získať nezáväznú cenovú ponuku</a>
+                <a href="#projekty" class="btn-secondary">Pozrieť naše projekty</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Rokov skúseností</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">200+</span>
+            <span class="stat-label">Realizovaných projektov</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Spokojných klientov</span>
+        </div>
+
+    </div>
+
+    <!-- Services -->
+    <section class="services" id="sluzby">
+        <!-- Fixed SVG house logo watermark: z-index 1, between section background and cards -->
+        <div class="services-bg-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <g fill="none" stroke="#FF6B35" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+                    <polygon points="100,30 20,95 35,95 35,170 165,170 165,95 180,95" />
+                    <rect x="60" y="115" width="30" height="55" />
+                    <circle cx="83" cy="142" r="2.5" fill="#FF6B35" />
+                    <rect x="115" y="110" width="25" height="25" />
+                    <line x1="127.5" y1="110" x2="127.5" y2="135" />
+                    <line x1="115" y1="122.5" x2="140" y2="122.5" />
+                    <line x1="100" y1="30" x2="100" y2="10" />
+                    <line x1="94" y1="10" x2="106" y2="10" />
+                </g>
+            </svg>
+        </div>
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>Naše služby</h2>
+                <p>Komplexné stavebné riešenia od základov až po kolaudáciu. Špecializujeme sa na kvalitu a detail.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">🏠</span>
+                    <h3>Výstavba rodinných domov</h3>
+                    <p>Komplexná výstavba rodinných domov na kľúč. Od projektu cez hrubú stavbu až po finálne úpravy. Moderné technológie a materiály.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🔨</span>
+                    <h3>Rekonštrukcie a renovácie</h3>
+                    <p>Kompletné rekonštrukcie bytov, domov a komerčných priestorov. Výmena inštalácií, sadrokartón, podlahy, obklady a maľby.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🏢</span>
+                    <h3>Prístavby a nadstavby</h3>
+                    <p>Rozšírenie vášho domu o nové miestnosti, poschodia alebo garáže. Statické posudky a povolenia zaistíme.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🏗️</span>
+                    <h3>Komerčné stavby</h3>
+                    <p>Výstavba a rekonštrukcia kancelárií, obchodov, skladov a prevádzok. Dodržiavanie termínov a rozpočtu.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🎨</span>
+                    <h3>Interiérové úpravy</h3>
+                    <p>Dizajnové riešenia interiérov, sadrokartónové konštrukcie, stropné systémy, priečky a špeciálne úpravy.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="proces">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>Ako pracujeme</h2>
+                <p>Transparentný proces od prvého kontaktu až po odovzdanie diela. Vieme, že váš čas je drahocenný.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Nezáväzná konzultácia</h3>
+                    <p>Stretneme sa, preberieme vaše požiadavky a predstavíme vám možnosti riešenia.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Obhliadka a zameranie</h3>
+                    <p>Prídeme na miesto stavby, zameriame priestory a pripravíme detailný rozpočet.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Zmluva a harmonogram</h3>
+                    <p>Spíšeme zmluvu s jasne definovanými termínmi, cenou a platobnými podmienkami.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h3>Realizácia stavby</h3>
+                    <p>Začíname práce podľa harmonogramu. Pravidelne vás informujeme o postupe.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">5</div>
+                    <h3>Kontrola a odovzdanie</h3>
+                    <p>Spoločne skontrolujeme kvalitu prác, odstránime pripomienky a odovzdáme dielo.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">6</div>
+                    <h3>Záruka a servis</h3>
+                    <p>Poskytujeme záruku na všetky vykonané práce a sme vám k dispozícii aj po odovzdaní diela.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projekty">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2>Naše projekty</h2>
+                <p>Inšpirujte sa našimi realizáciami. Každý projekt je pre nás výzvou a dôvodom na hrdosť.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop" alt="Postavený moderný rodinný dom" class="project-image" loading="lazy">
+                    <div class="project-info">
+                        <h3>Moderný rodinný dom</h3>
+                        <p>Komplexná výstavba moderného rodinného domu s bazénom</p>
+                        <div class="project-meta">
+                            <span>📍 Bratislava</span>
+                            <span>⏱️ 8 mesiacov</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop" alt="Stavba komerčných priestorov" class="project-image" loading="lazy">
+                    <div class="project-info">
+                        <h3>Komerčné priestory</h3>
+                        <p>Výstavba administratívnej budovy s kanceláriami</p>
+                        <div class="project-meta">
+                            <span>📍 Žilina</span>
+                            <span>⏱️ 12 mesiacov</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="Nadstavba rodinného domu" class="project-image" loading="lazy">
+                    <div class="project-info">
+                        <h3>Nadstavba domu</h3>
+                        <p>Prístavba druhého poschodia na existujúci rodinný dom</p>
+                        <div class="project-meta">
+                            <span>📍 Trenčín</span>
+                            <span>⏱️ 6 mesiacov</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Rekonštrukcia kuchyne" class="project-image" loading="lazy">
+                    <div class="project-info">
+                        <h3>Rekonštrukcia kuchyne</h3>
+                        <p>Moderná kuchyňa na mieru s ostrovčekom</p>
+                        <div class="project-meta">
+                            <span>📍 Nitra</span>
+                            <span>⏱️ 6 týždňov</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop" alt="Rekonštrukcia kúpeľne" class="project-image" loading="lazy">
+                    <div class="project-info">
+                        <h3>Rekonštrukcia kúpeľne</h3>
+                        <p>Luxusná kúpeľňa s walk-in sprchou a podlahovým kúrením</p>
+                        <div class="project-meta">
+                            <span>📍 Prešov</span>
+                            <span>⏱️ 5 týždňov</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="kontakt">
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Kontaktujte nás</h3>
+                <p>Máte záujem o naše služby alebo potrebujete poradiť? Neváhajte nás kontaktovať. Radi vám pripravíme nezáväznú cenovú ponuku na mieru.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Telefón</strong><br>
+                            <a href="tel:+421905231350" style="color: var(--primary); text-decoration: none;">0905 231 350</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:info@keltex.sk" style="color: var(--primary); text-decoration: none;">info@keltex.sk</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Adresa</strong><br>
+                            Čadečka 579, 022 01 Čadca
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <strong>Pracovné časy</strong><br>
+                            Po-Pia: 7:00 - 17:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Meno a priezvisko *</label>
+                    <input type="text" id="name" name="name" required placeholder="Jozef Novák">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefón *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="0905 231 350">
+                </div>
+                <div class="form-group">
+                    <label for="service">O akú službu máte záujem? *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Vyberte službu</option>
+                        <option value="rodinny-dom">Výstavba rodinného domu</option>
+                        <option value="rekonstrukcia">Rekonštrukcia bytu/domu</option>
+                        <option value="pristavba">Prístavba / nadstavba</option>
+                        <option value="komercne">Komerčné priestory</option>
+                        <option value="interier">Interiérové úpravy</option>
+                        <option value="instalacie">Inštalácie a siete</option>
+                        <option value="ine">Iné</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Správa</label>
+                    <textarea id="message" name="message" placeholder="Popíšte nám váš projekt..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Odoslať nezáväznú požiadavku</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Keltex</h4>
+                <p>Váš spoľahlivý partner pre stavebné práce. Kvalita, termíny a spokojnosť klienta sú pre nás prioritou.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Služby</h4>
+                <a href="#sluzby">Výstavba domov</a>
+                <a href="#sluzby">Rekonštrukcie</a>
+                <a href="#sluzby">Prístavby</a>
+                <a href="#sluzby">Komerčné priestory</a>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <p>📞 0905 231 350</p>
+                <p>📧 info@keltex.sk</p>
+                <p>📍 Čadečka 579, 022 01 Čadca</p>
+            </div>
+            <div class="footer-section">
+                <h4>Certifikácie</h4>
+                <p>✓ ISO 9001</p>
+                <p>✓ Živnostenské oprávnenie</p>
+                <p>✓ Poistenie zodpovednosti</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Keltex.sk. Všetky práva vyhradené.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show/hide fixed services background logo depending on scroll position
+        const servicesSection = document.getElementById('sluzby');
+        const servicesBgLogo = document.querySelector('.services-bg-logo');
+
+        function updateServicesLogoVisibility() {
+            if (!servicesSection || !servicesBgLogo) {
+                return;
+            }
+            const rect = servicesSection.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight && rect.bottom > 0;
+            servicesBgLogo.style.visibility = inView ? 'visible' : 'hidden';
+        }
+
+        window.addEventListener('scroll', updateServicesLogoVisibility);
+        window.addEventListener('resize', updateServicesLogoVisibility);
+        updateServicesLogoVisibility();
+
+        // Scroll animations (cards fly in from sides via CSS classes)
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '50px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Ďakujeme za vašu správu! Budeme vás kontaktovať čo najskôr.');
+            e.target.reset();
+        }
+
+        function closeMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            const button = document.querySelector('.mobile-menu-btn');
+
+            nav.classList.remove('open');
+            nav.setAttribute('aria-expanded', 'false');
+            button.classList.remove('active');
+            button.textContent = '☰';
+            button.setAttribute('aria-label', 'Otvoriť menu');
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            const button = document.querySelector('.mobile-menu-btn');
+            const isOpen = nav.classList.toggle('open');
+
+            nav.setAttribute('aria-expanded', String(isOpen));
+            button.classList.toggle('active', isOpen);
+            button.textContent = isOpen ? '✕' : '☰';
+            button.setAttribute('aria-label', isOpen ? 'Zavrieť menu' : 'Otvoriť menu');
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 968) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            const nav = document.querySelector('nav ul');
+            const button = document.querySelector('.mobile-menu-btn');
+            const clickedInsideNav = nav.contains(event.target);
+            const clickedButton = button.contains(event.target);
+
+            if (window.innerWidth <= 968 && nav.classList.contains('open') && !clickedInsideNav && !clickedButton) {
+                closeMobileMenu();
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
