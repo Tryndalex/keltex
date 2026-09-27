@@ -69,6 +69,13 @@
 
         html {
             scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
         }
 
         body {
@@ -141,7 +148,8 @@
             width: 100%;
         }
 
-        .cta-phone {
+        .cta-phone,
+        .cta-contact {
             background: var(--gradient);
             color: white;
             padding: 0.75rem 1.5rem;
@@ -155,7 +163,12 @@
             gap: 0.5rem;
         }
 
-        .cta-phone:hover {
+        .cta-contact {
+            display: none;
+        }
+
+        .cta-phone:hover,
+        .cta-contact:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
@@ -229,6 +242,15 @@
             }
         }
 
+        @keyframes ctaPulse {
+            0%, 1%, 100% {
+                filter: brightness(1);
+            }
+            0.5% {
+                filter: brightness(1.25);
+            }
+        }
+
         .btn-primary {
             background: var(--gradient);
             color: white;
@@ -241,6 +263,10 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+        }
+
+        .hero-buttons .btn-primary {
+            animation: ctaPulse 60s ease-in-out infinite;
         }
 
         .btn-primary:hover {
@@ -388,11 +414,27 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 2rem;
             perspective: 1500px;
             position: relative;
             z-index: 3;
+        }
+
+        /* 3 karty v prvom rade */
+        .service-card:nth-child(1),
+        .service-card:nth-child(2),
+        .service-card:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        /* 2 karty v druhom rade – vycentrované */
+        .service-card:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
+
+        .service-card:nth-child(5) {
+            grid-column: 4 / span 2;
         }
 
         /* 3D Glass Cards - Services (orange tinted glass, lets logo show through gaps) */
@@ -513,7 +555,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 2rem;
             margin-top: 3rem;
             perspective: 1500px;
@@ -554,6 +596,18 @@
             padding: 1.5rem;
         }
 
+        .project-card.image-only {
+            box-sizing: border-box;
+        }
+
+        .project-card.image-only .project-info {
+            display: none;
+        }
+
+        .project-card.image-only .project-image {
+            height: 100%;
+        }
+
         .project-info h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
@@ -573,6 +627,8 @@
             color: var(--primary);
             font-weight: 600;
         }
+
+        
 
         /* Contact Form */
         .contact {
@@ -649,6 +705,31 @@
             color: var(--secondary);
         }
 
+        .gdpr-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .gdpr-consent input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            flex: 0 0 auto;
+            margin-top: 0.25rem;
+            padding: 0;
+            accent-color: var(--primary);
+        }
+
+        .gdpr-consent label {
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .gdpr-consent a {
+            color: var(--primary);
+        }
+
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -660,6 +741,11 @@
             font-family: inherit;
             transition: all 0.3s ease;
             background: rgba(255,255,255,0.8);
+        }
+
+        .form-group select option {
+            background: #483228;
+            color: #F5F5F7;
         }
 
         .form-group input:focus,
@@ -933,6 +1019,11 @@
 
             
 
+            header {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
             .header-container {
                 padding: 1rem;
                 position: relative;
@@ -989,6 +1080,24 @@
                 display: block;
             }
 
+            .cta-phone {
+                display: none;
+            }
+
+            .cta-contact {
+                position: fixed;
+                right: 1rem;
+                bottom: calc(1rem + env(safe-area-inset-bottom));
+                z-index: 900;
+                padding: 0.75rem 1rem;
+                white-space: nowrap;
+                display: flex;
+            }
+
+            .cta-contact.in-contact {
+                display: none;
+            }
+
             .hero {
                 height: 80vh;
             }
@@ -1008,7 +1117,20 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .projects-grid .project-card {
+                cursor: pointer;
+            }
+
+            .projects-grid .project-card:hover {
+                transform: none;
+                box-shadow: var(--shadow);
+            }
+
+            .projects-grid .project-card:hover .project-image {
+                transform: none;
             }
 
             .services-grid .service-card:nth-child(odd),
@@ -1029,10 +1151,19 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 640px) {
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                position: relative;
+                top: -12px;
+                left: -8px;
             }
 
             .btn-primary,
@@ -1056,6 +1187,8 @@
                 height: 240px;
                 opacity: 0.12;
             }
+
+            
         }
 
         /* ===== DARK MODE FOR MOBILE (max-width: 768px) ===== */
@@ -1077,6 +1210,14 @@
             nav ul {
                 background: #17171C !important;
             }
+
+            .services-grid {
+    grid-template-columns: 1fr;
+}
+
+.services-grid .service-card {
+    grid-column: 1 / -1;
+}
 
             .mobile-menu-btn {
                 color: #E8E8EA;
@@ -1190,6 +1331,12 @@
             }
             
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-buttons .btn-primary {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1207,6 +1354,9 @@
             </nav>
             <a href="tel:+421905231350" class="cta-phone">
                 <span>📞 0905 231 350</span>
+            </a>
+            <a href="#kontakt" class="cta-contact">
+                <span>Kontaktujte nás</span>
             </a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Otvoriť menu" aria-expanded="false">☰</button>
         </div>
@@ -1474,6 +1624,12 @@
     </div>
 
     <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email"
+               required placeholder="vas@email.sk">
+    </div>
+
+    <div class="form-group">
         <label for="service">O akú službu máte záujem? *</label>
         <select id="service" name="service" required>
             <option value="">Vyberte službu</option>
@@ -1487,6 +1643,11 @@
         </select>
     </div>
 
+    <div class="form-group gdpr-consent">
+        <input type="checkbox" id="gdprConsent" name="gdpr_consent" value="yes" required>
+        <label for="gdprConsent">Súhlasím so spracovaním osobných údajov podľa <a href="gdpr.html" target="_blank" rel="noopener">zásad ochrany osobných údajov</a>. *</label>
+    </div>
+
     <div class="form-group">
         <label for="message">Správa</label>
         <textarea id="message" name="message"
@@ -1494,7 +1655,7 @@
     </div>
 
     <button type="submit" class="btn-primary submit-btn">
-        <span class="button-text">Odoslať nezáväznú požiadavku</span>
+        <span class="button-text">Odoslať</span>
         <span class="button-loading">Odosielam...</span>
     </button>
 
@@ -1565,6 +1726,44 @@
         });
 
         fadeElements.forEach(el => observer.observe(el));
+
+        const contactCta = document.querySelector('.cta-contact');
+        const contactSection = document.querySelector('#kontakt');
+
+        if (contactCta && contactSection) {
+            const contactCtaObserver = new IntersectionObserver(([entry]) => {
+                contactCta.classList.toggle('in-contact', entry.isIntersecting);
+            });
+            contactCtaObserver.observe(contactSection);
+        }
+
+        document.querySelectorAll('.projects-grid .project-card').forEach(card => {
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-expanded', 'false');
+
+            const toggleImageOnly = () => {
+                const isImageOnly = !card.classList.contains('image-only');
+
+                if (isImageOnly) {
+                    card.style.height = `${card.offsetHeight}px`;
+                    card.classList.add('image-only');
+                } else {
+                    card.classList.remove('image-only');
+                    card.style.removeProperty('height');
+                }
+
+                card.setAttribute('aria-expanded', String(isImageOnly));
+            };
+
+            card.addEventListener('click', toggleImageOnly);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleImageOnly();
+                }
+            });
+        });
 
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
