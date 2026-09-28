@@ -15,7 +15,7 @@
       "image": "https://www.keltex.sk/logo.png",
       "telephone": "+421905231350",
       "email": "info@keltex.sk",
-      "foundingDate": "2015",
+      "foundingDate": "1999",
       "description": "Stavebná firma KELTEX ponúka výstavbu rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce.",
       "address": {
         "@type": "PostalAddress",
@@ -497,9 +497,10 @@
             background: white;
         }
 
+        /* Ako pracujeme */
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -804,10 +805,6 @@
             transition: color 0.3s ease;
         }
 
-        .footer-section a:hover {
-            color: var(--primary);
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -1017,7 +1014,19 @@
         /* Responsive */
         @media (max-width: 968px) {
 
-            
+            /* TABLET – 2 karty vedľa seba */
+        @media (max-width: 968px) {
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* MOBIL – 1 karta na riadok */
+        @media (max-width: 640px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
 
             header {
                 backdrop-filter: none;
@@ -1343,7 +1352,9 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <img class="logo" src="logo.png" alt="Keltex kompletná stavebná činnosť" />
+            <a href="#hero">
+                <img class="logo" src="logo.png" alt="Keltex kompletná stavebná činnosť">
+            </a>
             <nav>
                 <ul>
                     <li><a href="#sluzby">Služby</a></li>
@@ -1363,7 +1374,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
             <h1>Staviame vaše sny s precíznosťou a kvalitou</h1>
             <p>
@@ -1605,28 +1616,29 @@
                             Po-Pia: 7:00 - 17:00
                         </div>
                     </div>
+                    
                 </div>
             </div>
             <form class="contact-form fade-in" id="contactForm"
       action="https://formspree.io/f/mnpnogvq"
-      method="POST">
+        method="POST" autocomplete="on">
 
     <div class="form-group">
         <label for="name">Meno a priezvisko *</label>
         <input type="text" id="name" name="name"
-               required placeholder="Jozef Novák">
+             autocomplete="name" required placeholder="Jozef Novák">
     </div>
 
     <div class="form-group">
         <label for="phone">Telefón *</label>
         <input type="tel" id="phone" name="phone"
-               required placeholder="0905 231 350">
+             autocomplete="tel" required placeholder="0905 231 350">
     </div>
 
     <div class="form-group">
         <label for="email">Email *</label>
         <input type="email" id="email" name="email"
-               required placeholder="vas@email.sk">
+             autocomplete="email" required placeholder="vas@email.sk">
     </div>
 
     <div class="form-group">
@@ -1690,18 +1702,20 @@
             </div>
             <div class="footer-section">
                 <h4>Služby</h4>
-                <a href="#sluzby">Výstavba domov</a>
-                <a href="#sluzby">Rekonštrukcie</a>
-                <a href="#sluzby">Prístavby</a>
-                <a href="#sluzby">Komerčné priestory</a>
+                <a>Výstavba domov</a>
+                <a>Rekonštrukcie</a>
+                <a>Prístavby</a>
+                <a>Komerčné priestory</a>
             </div>
             <div class="footer-section">
                 <h4>Kontakt</h4>
                 <p>📞 0905 231 350</p>
                 <p>📧 info@keltex.sk</p>
                 <p>📍 Čadečka 579, 022 01 Čadca</p>
+                <p style="margin-left: 26px;"> IČO: 22605509</p>
+                <p style="margin-left: 26px;"> DIČ: 1020452862</p>
             </div>
-            
+    
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Keltex.sk. Všetky práva vyhradené.</p>
@@ -1779,28 +1793,34 @@
             });
         });
 
-
         function closeMobileMenu() {
             const nav = document.querySelector('nav ul');
             const button = document.querySelector('.mobile-menu-btn');
 
             nav.classList.remove('open');
-            nav.setAttribute('aria-expanded', 'false');
             button.classList.remove('active');
             button.textContent = '☰';
             button.setAttribute('aria-label', 'Otvoriť menu');
+            button.setAttribute('aria-expanded', 'false');
         }
 
         function toggleMobileMenu() {
             const nav = document.querySelector('nav ul');
             const button = document.querySelector('.mobile-menu-btn');
+
             const isOpen = nav.classList.toggle('open');
 
-            nav.setAttribute('aria-expanded', String(isOpen));
             button.classList.toggle('active', isOpen);
             button.textContent = isOpen ? '✕' : '☰';
-            button.setAttribute('aria-label', isOpen ? 'Zavrieť menu' : 'Otvoriť menu');
-        }
+            button.setAttribute(
+                'aria-label',
+                isOpen ? 'Zavrieť menu' : 'Otvoriť menu'
+            );
+            button.setAttribute(
+                'aria-expanded',
+                String(isOpen)
+            );
+}
 
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1873,7 +1893,7 @@
 
                 alert(
                     "Správu sa nepodarilo odoslať. " +
-                    "Skontrolujte internetové pripojenie a skúste to znova."
+                    "Skontrolujte, či ste vyplnili všetky požadované polia a skúste to znova."
                 );
 
                 button.classList.remove("loading");
