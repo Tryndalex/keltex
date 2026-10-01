@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochrana osobných údajov – KELTEX</title>
+    <meta name="description" content="Informácie o ochrane osobných údajov a spracúvaní osobných údajov spoločnosťou KELTEX.">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E55A2B;
+            --secondary: #2C3E50;
+            --light: #F8F9FA;
+            --dark: #1A1A1A;
+            --gray: #6C757D;
+            --gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFA94D 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--secondary);
+            background: var(--light);
+        }
+
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: flex-end;
+            padding: 18px 24px;
+            background: rgba(248, 249, 250, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border: none;
+            border-radius: 50px;
+            background: var(--gradient);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(255,107,53,0.28);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.38);
+        }
+
+        .container {
+            width: min(100% - 32px, 1000px);
+            margin: 0 auto;
+            padding: 55px 0 80px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+            color: var(--secondary);
+            margin-bottom: 14px;
+        }
+
+        .header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            margin: 16px auto 0;
+            border-radius: 3px;
+            background: var(--gradient);
+        }
+
+        .header p {
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        .content {
+            background: white;
+            padding: clamp(25px, 5vw, 55px);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin: 32px 0 12px;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            margin: 22px 0 8px;
+            color: var(--secondary);
+            font-size: 1.15rem;
+        }
+
+        p {
+            margin-bottom: 14px;
+        }
+
+        ul {
+            margin: 8px 0 18px 24px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .highlight {
+            margin: 22px 0;
+            padding: 18px 20px;
+            border-left: 4px solid var(--primary);
+            border-radius: 10px;
+            background: rgba(255,107,53,0.07);
+        }
+
+        .contact-box {
+            margin-top: 28px;
+            padding: 22px;
+            border-radius: 14px;
+            background: var(--light);
+            border: 1px solid #e9ecef;
+        }
+
+        .contact-box strong {
+            color: var(--secondary);
+        }
+
+        a {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .footer-note {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background: #0F0F12;
+                color: #E8E8EA;
+            }
+
+            .top-bar {
+                background: rgba(15,15,18,0.94);
+                border-bottom-color: rgba(255,255,255,0.1);
+            }
+
+            .content {
+                background: #17171C;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            }
+
+            .header h1,
+            h2,
+            h3 {
+                color: #F5F5F7;
+            }
+
+            .header p,
+            .footer-note {
+                color: #A0A0A8;
+            }
+
+            .highlight {
+                background: rgba(255,107,53,0.1);
+            }
+
+            .contact-box {
+                background: rgba(255,255,255,0.05);
+                border-color: rgba(255,255,255,0.12);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="back-btn" aria-label="Späť na hlavnú stránku">
+            ← Späť
+        </a>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1>Ochrana osobných údajov</h1>
+            <p>Informácie o spracúvaní a ochrane osobných údajov na webovej stránke KELTEX.sk</p>
+        </header>
+
+        <article class="content">
+            <h2>1. Prevádzkovateľ</h2>
+            <p>
+                Prevádzkovateľom tejto webovej stránky a správcom osobných údajov je:
+            </p>
+
+            <div class="contact-box">
+                <strong>KELTEX</strong><br>
+                Čadečka 579, 022 01 Čadca, Slovenská republika<br>
+                Telefón: <a href="tel:+421905231350">0905 231 350</a><br>
+                E-mail: <a href="mailto:info@keltex.sk">info@keltex.sk</a>
+            </div>
+
+            <h2>2. Aké osobné údaje spracúvame</h2>
+            <p>
+                Prostredníctvom kontaktného formulára môžeme spracúvať najmä údaje,
+                ktoré nám dobrovoľne poskytnete:
+            </p>
+            <ul>
+                <li>meno a priezvisko,</li>
+                <li>telefónne číslo,</li>
+                <li>údaj o požadovanej službe,</li>
+                <li>obsah vašej správy a ďalšie údaje, ktoré nám v správe dobrovoľne uvediete.</li>
+            </ul>
+
+            <h2>3. Účel spracúvania osobných údajov</h2>
+            <p>
+                Osobné údaje získané prostredníctvom kontaktného formulára používame
+                na vybavenie vašej požiadavky, komunikáciu s vami, prípravu cenovej
+                ponuky a ďalšie kroky potrebné na vybavenie vášho dopytu.
+            </p>
+
+            <h2>4. Právny základ spracúvania</h2>
+            <p>
+                Právny základ spracúvania osobných údajov sa určuje podľa konkrétneho
+                účelu spracúvania, najmä podľa právnych základov uvedených v čl. 6
+                Nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 (GDPR).
+            </p>
+
+            <div class="highlight">
+                Odoslaním kontaktného formulára poskytujete údaje potrebné na
+                spracovanie a vybavenie vašej požiadavky. Údaje poskytujte iba v
+                rozsahu potrebnom na daný účel.
+            </div>
+
+            <h2>5. Doba uchovávania údajov</h2>
+            <p>
+                Osobné údaje uchovávame iba po dobu potrebnú na splnenie účelu,
+                na ktorý boli získané, prípadne po dobu vyžadovanú platnými právnymi
+                predpismi.
+            </p>
+
+            <h2>6. Komu môžu byť údaje sprístupnené</h2>
+            <p>
+                Osobné údaje môžu byť sprístupnené iba osobám alebo poskytovateľom
+                služieb, ktorí ich potrebujú na zabezpečenie prevádzky webovej
+                stránky, kontaktného formulára alebo vybavenie vašej požiadavky,
+                a to v súlade s platnými právnymi predpismi.
+            </p>
+
+            <h2>7. Kontaktný formulár</h2>
+            <p>
+                Kontaktný formulár na stránke slúži na odoslanie vašej požiadavky
+                spoločnosti KELTEX. Údaje z formulára sa používajú na kontaktovanie
+                záujemcu a vybavenie jeho dopytu.
+            </p>
+
+            <h2>8. Vaše práva</h2>
+            <p>V súvislosti so spracúvaním osobných údajov máte podľa platných právnych predpisov najmä právo:</p>
+            <ul>
+                <li>požiadať o prístup k svojim osobným údajom,</li>
+                <li>požiadať o opravu nesprávnych alebo neúplných údajov,</li>
+                <li>požiadať o vymazanie údajov, ak sú splnené zákonné podmienky,</li>
+                <li>požiadať o obmedzenie spracúvania,</li>
+                <li>namietať proti spracúvaniu v prípadoch ustanovených GDPR,</li>
+                <li>požiadať o prenosnosť údajov, ak sú splnené zákonné podmienky,</li>
+                <li>podať sťažnosť dozornému orgánu.</li>
+            </ul>
+
+            <h2>9. Bezpečnosť osobných údajov</h2>
+            <p>
+                Prevádzkovateľ prijíma primerané technické a organizačné opatrenia
+                na ochranu osobných údajov pred neoprávneným prístupom, stratou,
+                zneužitím alebo neoprávneným zverejnením.
+            </p>
+
+            <h2>10. Cookies</h2>
+            <p>
+                Táto webová stránka môže používať technické alebo nevyhnutné cookies
+                potrebné na jej správne fungovanie. Ak budú používané ďalšie typy
+                cookies alebo analytické či marketingové nástroje, príslušné
+                informácie a súhlasy budú zabezpečené v súlade s platnými právnymi
+                predpismi.
+            </p>
+
+            <h2>11. Dozorný orgán</h2>
+            <p>
+                Ak sa domnievate, že pri spracúvaní vašich osobných údajov došlo
+                k porušeniu vašich práv, máte právo obrátiť sa na príslušný
+                dozorný orgán pre ochranu osobných údajov.
+            </p>
+
+            <h2>12. Kontakt</h2>
+            <p>
+                V prípade otázok týkajúcich sa spracúvania vašich osobných údajov
+                nás môžete kontaktovať:
+            </p>
+
+            <div class="contact-box">
+                <strong>KELTEX</strong><br>
+                E-mail: <a href="mailto:info@keltex.sk">info@keltex.sk</a><br>
+                Telefón: <a href="tel:+421905231350">0905 231 350</a>
+            </div>
+
+            <p class="footer-note">
+                Posledná aktualizácia: 27. 9. 2026
+            </p>
+        </article>
+    </main>
+
+</body>
+</html>
