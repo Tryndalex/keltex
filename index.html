@@ -15,16 +15,16 @@
       "image": "https://www.keltex.sk/logo.png",
       "telephone": "+421905231350",
       "email": "info@keltex.sk",
-      "foundingDate": "1999",
+      "foundingDate": "1990",
       "description": "Stavebná firma KELTEX ponúka výstavbu rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Čadečka 579",
-        "postalCode": "022 01",
-        "addressLocality": "Čadca",
+        "streetAddress": "Odborárov 1806/18G",
+        "postalCode": "911 01",
+        "addressLocality": "Trenčín",
         "addressCountry": "SK"
       },
-      "areaServed": "Čadca a okolie",
+      "areaServed": "Žilina, Čadca, Kysucké nové Mesto, Trenčín, Púchov, Považská Bystrica, Nové Mesto nad Váhom a okolie",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -102,7 +102,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
+            padding: 0.35rem 2rem;
             position: relative;
         }
 
@@ -766,21 +766,60 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: 2.8rem 2rem 1.4rem;
         }
 
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2.1rem;
+            margin-bottom: 2.1rem;
+        }
+
+        @media (max-width: 900px) {
+            .footer-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-section:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            footer {
+                padding-right: 1.25rem;
+                padding-left: 1.25rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section:last-child {
+                grid-column: auto;
+            }
+        }
+
+        .footer-contact-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-contact-details {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
         }
 
         .footer-section h4 {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.05rem;
             position: relative;
             display: inline-block;
         }
@@ -798,16 +837,16 @@
         .footer-section p,
         .footer-section a {
             color: rgba(255,255,255,0.8);
-            line-height: 1.8;
+            line-height: 1.5;
             text-decoration: none;
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.4rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.6);
         }
@@ -1034,7 +1073,7 @@
             }
 
             .header-container {
-                padding: 1rem;
+                padding: 0.35rem 1rem;
                 position: relative;
             }
 
@@ -1391,11 +1430,11 @@
     <!-- Stats Bar -->
     <div class="stats-bar">
         <div class="stat-item">
-            <span class="stat-number">20+</span>
-            <span class="stat-label">Rokov skúseností</span>
+            <span class="stat-number">20+ rokov skúseností</span>
+            <span class="stat-label">Firma založená v roku 1990</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">200+</span>
+            <span class="stat-number">300+</span>
             <span class="stat-label">Realizovaných projektov</span>
         </div>
         <div class="stat-item">
@@ -1606,7 +1645,7 @@
                         <div class="contact-icon">📍</div>
                         <div>
                             <strong>Adresa</strong><br>
-                            Čadečka 579, 022 01 Čadca
+                            Odbojárov 1806/18G, <br> 911 01 Trenčín
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1616,10 +1655,18 @@
                             Po-Pia: 7:00 - 17:00
                         </div>
                     </div>
-                    
-                </div>
+                    <div class="contact-item">
+                        
+                        <div style="margin-left: 4rem;">
+                            <strong>Živnostenský register</strong><br>
+                            <div class="contact-item" style="padding-bottom: 2rem; font-weight: 600; color: var(--primary);">Trenčín 502-7795<br>IČO: 22605509 <br>
+                            DIČ: 1020452862</div>
+                        </div>
+                    </div>  
+                </div>  
             </div>
-            <form class="contact-form fade-in" id="contactForm"
+
+    <form style="max-width: 600px;" class="contact-form fade-in" id="contactForm"
       action="https://formspree.io/f/mnpnogvq"
         method="POST" autocomplete="on">
 
@@ -1672,7 +1719,7 @@
     </button>
 
 </form>
-
+</div>
 
 <!-- Ďakovná správa -->
 <div class="success-message" id="successMessage">
@@ -1690,7 +1737,6 @@
     </p>
 
 </div>
-        </div>
     </section>
 
     <!-- Footer -->
@@ -1709,11 +1755,20 @@
             </div>
             <div class="footer-section">
                 <h4>Kontakt</h4>
-                <p>📞 0905 231 350</p>
-                <p>📧 info@keltex.sk</p>
-                <p>📍 Čadečka 579, 022 01 Čadca</p>
-                <p style="margin-left: 26px;"> IČO: 22605509</p>
-                <p style="margin-left: 26px;"> DIČ: 1020452862</p>
+                <div class="footer-contact-details">
+                    <div>
+                        <p>📞 0905 231 350</p>
+                        <p>📧 info@keltex.sk</p>
+                        <p>📍 Odbojárov 1806/18G,
+911 01 Trenčín</p>
+                    </div>
+                    <div>
+                        <p>Živnostenský register: Trenčín 502-7795</p>
+                        <p>IČO: 22605509</p>
+                        <p>DIČ: 1020452862</p>
+                    </div>
+                </div>
+                
             </div>
     
         </div>
