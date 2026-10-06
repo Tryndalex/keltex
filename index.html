@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.keltex.sk/">
     <title>KELTEX – Stavebná firma | Výstavba a rekonštrukcie</title>
     <meta name="description" content="KELTEX – stavebná firma. Výstavba rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce. Kontaktujte nás pre cenovú ponuku.">
     <script type="application/ld+json">
@@ -19,7 +20,7 @@
       "description": "Stavebná firma KELTEX ponúka výstavbu rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Odborárov 1806/18G",
+        "streetAddress": "Odbojárov 1806/18G",
         "postalCode": "911 01",
         "addressLocality": "Trenčín",
         "addressCountry": "SK"
@@ -68,6 +69,10 @@
         }
 
         html {
+            max-width: 100%;
+            overflow-x: hidden;
+            scroll-padding-top: 80px;
+            -webkit-text-size-adjust: 100%;
             scroll-behavior: smooth;
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -83,7 +88,15 @@
             line-height: 1.6;
             color: var(--secondary);
             overflow-x: hidden;
+            max-width: 100%;
+            position: relative;
         }
+
+        @supports (overflow: clip) {
+            html, body { overflow-x: clip; }
+        }
+
+        img, video, iframe, svg { max-width: 100%; }
 
         /* Sticky Header */
         header {
@@ -108,11 +121,13 @@
 
         .logo {
             width: 250px;
+            max-width: 100%;
+            height: auto;
             transition: transform 0.4s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.2);
+        @media (hover: hover) {
+            .logo:hover { transform: scale(1.2); }
         }
 
         nav ul {
@@ -414,7 +429,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 2rem;
             perspective: 1500px;
             position: relative;
@@ -552,6 +567,7 @@
         .projects {
             padding: 6rem 2rem;
             background: var(--light);
+            overflow: hidden;
         }
 
         .projects-grid {
@@ -641,7 +657,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 4rem;
             align-items: start;
         }
@@ -1052,20 +1068,13 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-
-            /* TABLET – 2 karty vedľa seba */
-        @media (max-width: 968px) {
-            .process-steps {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
-
-        /* MOBIL – 1 karta na riadok */
         @media (max-width: 640px) {
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
+            .process-steps { grid-template-columns: minmax(0, 1fr); }
         }
+
+        @media (max-width: 968px) {
 
             header {
                 backdrop-filter: none;
@@ -1160,7 +1169,7 @@
             }
 
             .contact-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
                 gap: 2rem;
             }
 
@@ -1201,7 +1210,7 @@
 
         @media (max-width: 768px) {
             .projects-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 
@@ -1209,9 +1218,6 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
-                position: relative;
-                top: -12px;
-                left: -8px;
             }
 
             .btn-primary,
@@ -1227,7 +1233,7 @@
 
             .services-grid,
             .process-steps {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .services-bg-logo {
@@ -1260,7 +1266,7 @@
             }
 
             .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .services-grid .service-card {
@@ -1380,6 +1386,31 @@
             
         }
 
+        @media (max-width: 968px) {
+            .contact-info, .contact-form, .contact-item { min-width: 0; }
+            .contact-form { max-width: 100% !important; padding: 2rem 1.25rem; }
+            .contact-item a, .contact-item div { overflow-wrap: anywhere; }
+            .contact-item div[style*="margin-left"] { margin-left: 0 !important; }
+            .services-grid .service-card:nth-child(odd),
+            .services-grid .service-card:nth-child(even),
+            .projects-grid .project-card:nth-child(odd),
+            .projects-grid .project-card:nth-child(even) {
+                transform: translateY(30px) !important;
+            }
+            .services-grid .service-card.visible,
+            .projects-grid .project-card.visible {
+                transform: none !important;
+            }
+            .services, .process, .projects, .contact { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .service-card { padding: 1.75rem; }
+            .hero { min-height: 80vh; min-height: 80svh; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .service-card, .project-card, .fade-in { transition: none !important; opacity: 1 !important; transform: none !important; }
+            .hero::before { animation: none; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-buttons .btn-primary {
                 animation: none;
@@ -1392,7 +1423,7 @@
     <header>
         <div class="header-container">
             <a href="#hero">
-                <img class="logo" src="logo.png" alt="Keltex kompletná stavebná činnosť">
+                <img class="logo" src="logo.png" width="250" height="80" alt="Keltex kompletná stavebná činnosť">
             </a>
             <nav>
                 <ul>
@@ -1430,7 +1461,7 @@
     <!-- Stats Bar -->
     <div class="stats-bar">
         <div class="stat-item">
-            <span class="stat-number">20+ rokov skúseností</span>
+            <span class="stat-number">30+ rokov skúseností</span>
             <span class="stat-label">Firma založená v roku 1990</span>
         </div>
         <div class="stat-item">
@@ -1551,7 +1582,7 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <img src="images/foto1.webp" alt="Postavený moderný rodinný dom" class="project-image" loading="lazy">
+                    <img src="images/foto1.webp" alt="Postavený moderný rodinný dom" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Moderný rodinný dom</h3>
                         <p>Komplexná výstavba moderného rodinného domu</p>
@@ -1562,7 +1593,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="images/foto2.webp" alt="Stavba komerčných priestorov" class="project-image" loading="lazy">
+                    <img src="images/foto2.webp" alt="Stavba komerčných priestorov" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Rekonštrukcia interiéru</h3>
                         <p>Rekonštrukcia interiéru rodinného domu</p>
@@ -1573,7 +1604,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="images/foto3.webp" alt="Prerabka chaty" class="project-image" loading="lazy">
+                    <img src="images/foto3.webp" alt="Prerabka chaty" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Rekonštrukcia chaty</h3>
                         <p>Komplexná rekonštrukcia chaty</p>
@@ -1584,7 +1615,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="images/foto8.webp" alt="Výstavba rodinného domu v Žiline" class="project-image" loading="lazy">
+                    <img src="images/foto8.webp" alt="Výstavba rodinného domu v Žiline" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Rodinný dom</h3>
                         <p>Moderný rodinný dom postavený od A po Z</p>
@@ -1595,7 +1626,7 @@
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="images/foto9.webp" alt="Nový interier rodinného domu v Novom Meste nad Váhom" class="project-image" loading="lazy">
+                    <img src="images/foto9.webp" alt="Nový interier rodinného domu v Novom Meste nad Váhom" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Interier rodinného domu</h3>
                         <p>Moderný interier rodinného domu v Novom Meste nad Váhom</p>
@@ -1606,7 +1637,7 @@
                     </div>
                 </div>
                <div class="project-card fade-in">
-                    <img src="images/Foto11.jpg" alt="Fasáda domu v Trenčíne" class="project-image" loading="lazy">
+                    <img src="images/Foto11.jpg" alt="Fasáda domu v Trenčíne" class="project-image" width="800" height="600" loading="lazy">
                     <div class="project-info">
                         <h3>Fasáda Trenčín</h3>
                         <p>Kompletná fasáda domu v Trenčíne</p>
