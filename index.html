@@ -7,15 +7,6 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <title>KELTEX – Stavebná firma | Výstavba a rekonštrukcie</title>
     <meta name="description" content="KELTEX – stavebná firma. Výstavba rodinných domov, rekonštrukcie, prístavby, nadstavby a stavebné práce. Kontaktujte nás pre cenovú ponuku.">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPYK8MM6WL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-LPYK8MM6WL');
-    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -52,6 +43,9 @@
       ]
     }
     </script>
+    <script>
+        document.documentElement.classList.add('js');
+    </script>
     <style>
         * {
             margin: 0;
@@ -60,9 +54,11 @@
         }
 
         :root {
+            --header-overlap: 84px;
+            --hero-extra-overlap: 12px;
             --primary: #FF6B35;
             --primary-dark: #E55A2B;
-            --secondary: #2C3E50;
+            --secondary: #f4f5f7;
             --accent: #27AE60;
             --light: #F8F9FA;
             --dark: #1A1A1A;
@@ -81,7 +77,7 @@
         html {
             max-width: 100%;
             overflow-x: hidden;
-            scroll-padding-top: 80px;
+            scroll-padding-top: var(--header-overlap);
             -webkit-text-size-adjust: 100%;
             scroll-behavior: smooth;
             scrollbar-width: none;
@@ -112,7 +108,8 @@
         header {
             position: sticky;
             top: 0;
-            background: #F8F9FA;
+            margin-bottom: calc(0px - var(--header-overlap) - var(--hero-extra-overlap));
+            background: rgba(26, 26, 26, 0.82);
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -125,7 +122,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.35rem 2rem;
             position: relative;
         }
 
@@ -134,6 +130,7 @@
             max-width: 100%;
             height: auto;
             transition: transform 0.4s ease;
+            margin-left: 15px;
         }
 
         @media (hover: hover) {
@@ -144,11 +141,12 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            
         }
 
         nav a {
             text-decoration: none;
-            color: var(--secondary);
+            color: white;
             font-weight: 600;
             transition: color 0.3s ease;
             position: relative;
@@ -201,7 +199,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 90vh;
+            height: calc(90vh + var(--header-overlap) + var(--hero-extra-overlap));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -377,12 +375,6 @@
     will-change: transform;
 }
 
-.services-bg-logo svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
         .services .section-container,
         .process .section-container {
             position: relative;
@@ -393,11 +385,6 @@
             width: 100%;
             height: 100%;
             display: block;
-        }
-
-        .services .section-container {
-            position: relative;
-            z-index: 2;
         }
 
         .section-container {
@@ -675,7 +662,7 @@
         .contact-info h3 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .contact-info p {
@@ -691,12 +678,20 @@
             gap: 1.5rem;
         }
 
+        .contact-register {
+            margin-left: 4rem;
+
+        }
+
+        .contact-item strong {
+            color: var(--gray);
+        }
         .contact-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .contact-icon {
@@ -1086,6 +1081,10 @@
 
         @media (max-width: 968px) {
 
+            :root {
+                --header-overlap: 91px;
+            }
+
             header {
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
@@ -1109,8 +1108,8 @@
                 flex-direction: column;
                 gap: 0.5rem;
                 padding: 0.75rem;
-                background: rgba(255, 255, 255, 0.98);
-                border: 1px solid rgba(0, 0, 0, 0.06);
+                background: rgba(26, 26, 26, 0.98);
+                border: 1px solid rgba(255, 255, 255, 0.12);
                 border-radius: 18px;
                 box-shadow: 0 14px 35px rgba(0,0,0,0.14);
                 z-index: 1001;
@@ -1166,7 +1165,7 @@
             }
 
             .hero {
-                height: 80vh;
+                height: calc(80vh + var(--header-overlap) + var(--hero-extra-overlap));
             }
 
             .stats-bar {
@@ -1343,9 +1342,7 @@
                 color: #F5F5F7;
             }
 
-            .contact-item {
-                color: #E8E8EA;
-            }
+           
 
             .form-group label {
                 color: #E8E8EA;
@@ -1425,6 +1422,19 @@
             .hero-buttons .btn-primary {
                 animation: none;
             }
+        }
+
+        html:not(.js) .fade-in,
+        html:not(.js) .services-grid .service-card,
+        html:not(.js) .projects-grid .project-card {
+            opacity: 1;
+            transform: none;
+        }
+
+        .form-error {
+            margin-bottom: 1rem;
+            color: #B42318;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -1698,9 +1708,9 @@
                     </div>
                     <div class="contact-item">
                         
-                        <div style="margin-left: 4rem;">
-                            <strong>Živnostenský register</strong><br>
-                            <div class="contact-item" style="padding-bottom: 2rem; font-weight: 600; color: var(--primary);">Trenčín 502-7795<br>IČO: 22605509 <br>
+                        <div class="contact-register">
+                            <strong>Živnostenský register</strong>
+                            <div>Trenčín 502-7795<br>IČO: 22605509 <br>
                             DIČ: 1020452862</div>
                         </div>
                     </div>  
@@ -1758,12 +1768,13 @@
         <span class="button-text">Odoslať</span>
         <span class="button-loading">Odosielam...</span>
     </button>
+    <p class="form-error" id="formError" role="alert" tabindex="-1" hidden></p>
 
 </form>
 </div>
 
 <!-- Ďakovná správa -->
-<div class="success-message" id="successMessage">
+<div class="success-message" id="successMessage" role="status" aria-live="polite" tabindex="-1">
 
     <div class="success-icon">✓</div>
 
@@ -1789,10 +1800,10 @@
             </div>
             <div class="footer-section">
                 <h4>Služby</h4>
-                <a>Výstavba domov</a>
-                <a>Rekonštrukcie</a>
-                <a>Prístavby</a>
-                <a>Komerčné priestory</a>
+                <p>Výstavba domov</p>
+                <p>Rekonštrukcie</p>
+                <p>Prístavby</p>
+                <p>Komerčné priestory</p>
             </div>
             <div class="footer-section">
                 <h4>Kontakt</h4>
@@ -1800,8 +1811,8 @@
                     <div>
                         <p>📞 0905 231 350</p>
                         <p>📧 info@keltex.sk</p>
-                        <p>📍 Odbojárov 1806/18G,
-911 01 Trenčín</p>
+                        <p>📍 Odbojárov 1806/18G</p>
+                        <p style="margin-left: 2rem;">911 01 Trenčín</p>
                     </div>
                     <div>
                         <p>Živnostenský register: Trenčín 502-7795</p>
@@ -1950,6 +1961,7 @@
     <script>
         const contactForm = document.getElementById("contactForm");
         const successMessage = document.getElementById("successMessage");
+        const formError = document.getElementById("formError");
 
         contactForm.addEventListener("submit", async function(event) {
 
@@ -1957,7 +1969,9 @@
 
             const button = contactForm.querySelector(".submit-btn");
 
-            // Zmena tlačidla
+            formError.hidden = true;
+            formError.textContent = "";
+            contactForm.setAttribute("aria-busy", "true");
             button.classList.add("loading");
             button.disabled = true;
 
@@ -1977,23 +1991,20 @@
                     throw new Error("Formspree error");
                 }
 
-                // Skrytie formulára
+                contactForm.setAttribute("aria-busy", "false");
                 contactForm.style.display = "none";
-
-                // Zobrazenie ďakovnej správy
                 successMessage.classList.add("show");
+                successMessage.focus();
 
             } catch (error) {
 
                 console.error("Chyba pri odosielaní:", error);
-
-                alert(
-                    "Správu sa nepodarilo odoslať. " +
-                    "Skontrolujte, či ste vyplnili všetky požadované polia a skúste to znova."
-                );
-
+                contactForm.setAttribute("aria-busy", "false");
                 button.classList.remove("loading");
                 button.disabled = false;
+                formError.textContent = "Správu sa nepodarilo odoslať. Skúste to znova.";
+                formError.hidden = false;
+                formError.focus();
             }
 
         });
